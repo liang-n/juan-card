@@ -1,0 +1,25 @@
+.banner{
+  margin-top: 30rpx;
+  /* background-color: #eee; */
+}
+
+.clock {
+  height: 240rpx;
+  width: 240rpx;
+  border-radius: 200rpx;
+  color: white;
+  background-image: linear-gradient(#5098fa, #6aa4f5);
+  box-shadow: 0 40rpx 100rpx -50rpx #5098fa;
+  justify-content: center;
+  margin-top: 100rpx;
+}
+
+.clock-hover {
+  opacity: 0.9;
+}
+
+.tips {
+  margin: 40rpx;
+  font-size: 32rpx;
+  color: #666;
+}

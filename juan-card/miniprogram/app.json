@@ -1,0 +1,10 @@
+{
+  "pages": ["pages/index/index"],
+  "window": {
+    "navigationBarBackgroundColor": "#363636",
+    "navigationBarTitleText": "卷书阁",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

@@ -1,0 +1,19 @@
+/* Lite version */
+page {
+  font-family: "LXGW WenKai Lite", sans-serif;
+  background: #363636;
+  height: 100%;
+}
+
+view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.background {
+  height: 100%;
+  background-color: white;
+  border-radius: 50rpx 50rpx 0 0;
+  box-sizing: border-box;
+}
