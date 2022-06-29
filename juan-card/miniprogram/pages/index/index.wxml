@@ -1,9 +1,16 @@
 <view class="background">
   <image class="banner" mode="aspectFit" src="cloud://liang-dev-1grvzxw3e2399892.6c69-liang-dev-1grvzxw3e2399892-1312623944/创意发散.png" />
+  <view>
+    <text class="title">{{record.name}}</text>
+  </view>
   <view class="clock" hover-class="clock-hover">
     <text>{{checkName}}</text>
   </view>
   <view class="tips">
     <text>{{tips}}</text>
+  </view>
+  <view class="row" wx:if="{{isAdmin}}">
+    <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">创建活动</navigator>
+    <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">修改活动</navigator>
   </view>
 </view>

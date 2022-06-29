@@ -1,1 +1,1 @@
-"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e liang-dev-1grvzxw3e2399892 --n quickstartFunctions --r --project "/Users/liang/Documents/my/project/juan-card/juan-card" --report_first --report
+"/Applications/wechatwebdevtools.app/Contents/MacOS/cli" cloud functions deploy --e liang-dev-1grvzxw3e2399892 --n fun --r --project "/Users/liang/Documents/my/project/juan-card/juan-card" --report_first --report

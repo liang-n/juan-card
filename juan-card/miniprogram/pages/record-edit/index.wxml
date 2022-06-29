@@ -1,0 +1,5 @@
+<view class="background">
+    <form bindsubmit="submit">
+        <button type="primary" form-type="submit">创建</button>
+    </form>
+</view>
