@@ -1,6 +1,7 @@
 {
   "pages": ["pages/index/index", "pages/record-edit/index"],
   "window": {
+    "backgroundColor": "#363636",
     "navigationBarBackgroundColor": "#363636",
     "navigationBarTitleText": "卷书阁",
     "navigationBarTextStyle": "white"

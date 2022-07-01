@@ -4,20 +4,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    form: {
-      name: "test",
-    },
+    name: "",
+    desc: "",
   },
 
-  submit: function (e) {
-    console.log("submit:", e);
-    wx.cloud.callFunction({
-      name: "fun",
-      data: {
-        type: "createRecord",
-        data: this.data.form,
-      },
-    });
+  submit: async function (e) {
+    console.log("submit.e", e);
+    try {
+      let res = await wx.cloud.callFunction({
+        name: "fun",
+        data: {
+          type: "createRecord",
+          data: this.data,
+        },
+      });
+    } catch (error) {
+      console.log("submit.error", error);
+    }
   },
 
   /**

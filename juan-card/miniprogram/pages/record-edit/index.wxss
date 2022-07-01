@@ -1,3 +1,42 @@
-.btn-submit {
-  background: #fff;
+.form {
+  padding: 0 60rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 40rpx;
+}
+
+.group {
+  margin: 40rpx 0;
+}
+
+.lable {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.i-content {
+  border: 2rpx solid #eee;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.i-line {
+  height: 80rpx;
+  padding: 0 20rpx;
+}
+
+.i-area {
+  padding: 20rpx;
+  height: 180rpx;
+  width: calc(100% - 46rpx) !important;
+  line-height: 1.5;
+}
+
+.btn {
+  margin: 30rpx 0;
 }

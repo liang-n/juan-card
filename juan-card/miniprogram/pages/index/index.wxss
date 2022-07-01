@@ -1,3 +1,7 @@
+.bg-center{
+  align-items: center;
+}
+
 .banner {
   /* margin-top: 30rpx; */
   /* background-color: #eee; */
@@ -12,6 +16,7 @@
   background-image: linear-gradient(#5098fa, #6aa4f5);
   box-shadow: 0 40rpx 100rpx -50rpx #5098fa;
   justify-content: center;
+  align-items: center;
   margin-top: 100rpx;
 }
 

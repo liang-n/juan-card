@@ -1,5 +1,15 @@
 <view class="background">
-    <form bindsubmit="submit">
-        <button type="primary" form-type="submit">创建</button>
+    <form class="form" bindsubmit="submit">
+        <view class="title">创建活动</view>
+        <view class="group">
+            <text class="lable">活动名称</text>
+            <input class="i-content i-line" model:value="{{name}}" placeholder="输入活动名称" type="text" />
+        </view>
+        <view class="group">
+            <text class="lable">活动简介</text>
+            <textarea class="i-content i-area" model:value="{{desc}}" placeholder="输入活动简介" />
+        </view>
+        <button class="btn" type="primary" form-type="submit">创建</button>
+        <button class="btn" type="default" form-type="reset">重置</button>
     </form>
 </view>

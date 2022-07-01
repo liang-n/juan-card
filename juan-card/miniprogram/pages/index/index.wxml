@@ -1,4 +1,4 @@
-<view class="background">
+<view class="background bg-center">
   <image class="banner" mode="aspectFit" src="cloud://liang-dev-1grvzxw3e2399892.6c69-liang-dev-1grvzxw3e2399892-1312623944/创意发散.png" />
   <view>
     <text class="title">{{record.name}}</text>
@@ -9,7 +9,7 @@
   <view class="tips">
     <text>{{tips}}</text>
   </view>
-  <view class="row" wx:if="{{isAdmin}}">
+  <view class="row" wx:if="{{true}}">
     <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">创建活动</navigator>
     <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">修改活动</navigator>
   </view>
