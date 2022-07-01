@@ -13,6 +13,9 @@ exports.main = async (event, context, cloud, db) => {
         ...form,
         _id: openid,
         openid,
+        created: db.serverDate(),
+        status: "enable",
+        credit: 0,
       },
     })
     .then((res) => {
