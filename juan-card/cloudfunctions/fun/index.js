@@ -7,13 +7,13 @@ const getRecord = require("./record/get.js");
 const updateRecord = require("./record/update.js");
 const removeRecord = require("./record/remove.js");
 
-const createMember = require("./member/create.js");
+const getMember = require("./member/get.js");
 
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV,
 });
 
-const db = cloud.database();
+const db = cloud.database({ throwOnNotFound: false });
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -33,7 +33,7 @@ exports.main = async (event, context) => {
       return await removeRecord.main(event, context, cloud, db);
 
     // member 用户信息
-    case "createMember":
-      return await createMember.main(event, context, cloud, db);
+    case "getMember":
+      return await getMember.main(event, context, cloud, db);
   }
 };

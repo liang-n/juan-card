@@ -5,39 +5,47 @@ Page({
     record: {},
     openid: null,
     isAmin: false,
+    member: null,
   },
 
-  onShow: async function (e) {
-    await this.getOpenId();
+  onShow: function (e) {
+    this.init();
+  },
+
+  init: async function (e) {
+    await this.getMember();
     await this.getRecord();
-    // 我想要前两个返回执行结果之后再执行下面的函数
-    this.isAdmin(this.data.openid, this.data.record);
+    this.isAdmin(this.data.member.openid, this.data.record);
   },
 
-  getOpenId: async function () {
-    let localOpenid = wx.getStorageSync("openid");
-    console.log("localOpenid", localOpenid);
-    if (localOpenid) {
-      // 从本地缓存中获取 openid
-      this.setData({ openid: localOpenid });
-    } else {
-      // 云函数获取 openid
-      try {
-        let res = wx.cloud.callFunction({
-          name: "fun",
-          data: {
-            type: "getOpenId",
-          },
-        });
-        let openid = res.result.openid;
-        this.setData({ openid });
-        // 本地缓存保存 openid
-        wx.setStorageSync("openid", openid);
-      } catch (error) {
-        console.log("getOpenId.error", error);
-      } finally {
-        console.log("openid", this.data.openid);
-      }
+  getMember: async function () {
+    // 从缓存中获取上次查询用户信息的时间，校验是否超过10小时
+    let member = wx.getStorageSync("member");
+    let last = wx.getStorageSync("getMemberTime");
+    let now = new Date();
+    if (last && now - last < 1000 * 60 * 60 * 10 && member) {
+      this.setData({ member });
+      console.log("localMember", this.data.member);
+      return; //终止执行函数
+    }
+
+    // 从数据库中查询用户信息
+    try {
+      let res = await wx.cloud.callFunction({
+        name: "fun",
+        data: {
+          type: "getMember",
+        },
+      });
+      this.setData({ member: res.result });
+
+      // 设置/更新本地缓存
+      wx.setStorageSync("member", member);
+      wx.setStorageSync("getMemberTime", now);
+    } catch (error) {
+      console.log("getMember.error", error);
+    } finally {
+      console.log("member", this.data.member);
     }
   },
 
@@ -66,8 +74,4 @@ Page({
       isAdmin,
     });
   },
-
-  changeCheckName: function () {},
-
-  changeTips: function () {},
 });

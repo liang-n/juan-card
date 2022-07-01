@@ -3,13 +3,16 @@
   <view>
     <text class="title">{{record.name}}</text>
   </view>
-  <view class="clock" hover-class="clock-hover">
+  <view class="clock" wx:if="{{record}}" hover-class="clock-hover">
+    <text>{{checkName}}</text>
+  </view>
+  <view class="clock-disable" wx:else="{{!record}}">
     <text>{{checkName}}</text>
   </view>
   <view class="tips">
     <text>{{tips}}</text>
   </view>
-  <view class="row" wx:if="{{true}}">
+  <view class="row" wx:if="{{isAdmin}}">
     <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">创建活动</navigator>
     <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">修改活动</navigator>
   </view>
