@@ -1,19 +1,23 @@
 // app.js
 App({
+  globalData: {},
+
   onLaunch: function () {
+    this.initCloud();
+    this.updateProgram();
+  },
+
+  initCloud: function () {
     if (!wx.cloud) {
       console.error("请使用 2.2.3 或以上的基础库以使用云能力");
     } else {
       wx.cloud.init({
-        // env 参数说明：
-        //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
-        //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
-        //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
         traceUser: true,
       });
     }
+  },
 
+  updateProgram: function () {
     // 立即更新版本,详见文档: https:/developers.weixin.qg.com/miniprogram/dev/framework/runtime,/update-mechanism.html
     let updateManager = wx.getUpdateManager();
     updateManager.onCheckForUpdate(function (res) {});
@@ -29,7 +33,34 @@ App({
         },
       });
     });
+  },
 
-    this.globalData = {};
-  }, 
+  getMember: async function () {
+    // 从缓存中获取上次查询用户信息的时间，校验是否超过10小时
+    let member = wx.getStorageSync("member");
+    let last = wx.getStorageSync("getMemberTime");
+    let now = Date.now();
+
+    if (last && now - last < 1000 * 60 * 60 * 10 && member) {
+      console.log("localMember", member);
+      return member; // 终止执行函数
+    }
+
+    // 从数据库中查询用户信息
+    try {
+      let res = await wx.cloud.callFunction({
+        name: "fun",
+        data: {
+          type: "getMember",
+        },
+      });
+      // 设置/更新本地缓存
+      wx.setStorageSync("member", res.result);
+      wx.setStorageSync("getMemberTime", now);
+      console.log("funMember", res.result);
+      return res.result; // 返回
+    } catch (error) {
+      console.log("getMember.error", error);
+    }
+  },
 });

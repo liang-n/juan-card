@@ -1,27 +1,35 @@
-<view class="background bg-center">
-  <view>
-    <image class="avatar" src="{{member.avatar}}" />
-    <text class="tips">{{member.name}}</text>
-  </view>
-  <!-- <image class="banner" mode="aspectFit" src="cloud://liang-dev-1grvzxw3e2399892.6c69-liang-dev-1grvzxw3e2399892-1312623944/创意发散.png" /> -->
-  <view>
-    <text class="title">{{record.name}}</text>
-  </view>
-  <view class="clock" wx:if="{{record}}" hover-class="clock-hover">
-    <text>{{checkName}}</text>
-  </view>
-  <view class="clock-disable" wx:else="{{!record}}">
-    <text>{{checkName}}</text>
-  </view>
-  <view class="tips">
-    <text>{{tips}}</text>
-  </view>
-  <!-- <view class="row" wx:if="{{isAdmin}}"> -->
-  <view class="row" wx:if="{{true}}">
-    <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">创建活动</navigator>
-    <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">修改活动</navigator>
-  </view>
-  <view class="tips" bind:tap="clearStorage">
-    <text>清除缓存</text>
-  </view>
+<view class="background ai-center">
+    <view class="row jc-between nowrap ai-center w-100">
+        <text class="title">每日打卡</text>
+        <navigator class="flex row jc-between nowrap ai-center" hover-class="none" wx:if="{{member}}" url="/pages/member-edit/index">
+            <image class="avatar" src="{{member.avatar}}" />
+            <view class="column jc-center">
+                <text class="fs-32 b">{{member.name}}</text>
+                <text class="fs-24">积分：{{member.credit}}</text>
+            </view>
+        </navigator>
+        <view class="fs-32" wx:else>未登录</view>
+    </view>
+    <!-- <image class="banner" mode="aspectFit" src="cloud://liang-dev-1grvzxw3e2399892.6c69-liang-dev-1grvzxw3e2399892-1312623944/创意发散.png" /> -->
+    <view>
+        <text class="title">{{record.name}}</text>
+    </view>
+    <view class="{{record?'clock':'clock clock-disable'}}" hover-class="{{record?'clock-hover':'none'}}">
+        <text>{{checkName}}</text>
+    </view>
+    <view class="tips">
+        <text>{{tips}}</text>
+    </view>
+    <!-- <view class="row" wx:if="{{isAdmin}}"> -->
+    <view class="row" wx:if="{{true}}">
+        <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">
+            创建活动
+        </navigator>
+        <navigator class="btn" hover-class="btn-hover" url="/pages/record-edit/index">
+            修改活动
+        </navigator>
+    </view>
+    <view class="tips" bind:tap="clearStorage">
+        <text>清除缓存</text>
+    </view>
 </view>

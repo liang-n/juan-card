@@ -1,7 +1,3 @@
-.bg-center{
-  align-items: center;
-}
-
 .banner {
   /* margin-top: 30rpx; */
   /* background-color: #eee; */
@@ -9,6 +5,7 @@
 }
 
 .clock {
+  font-size: 40rpx;
   height: 240rpx;
   width: 240rpx;
   border-radius: 200rpx;
@@ -22,6 +19,10 @@
 
 .clock-hover {
   opacity: 0.9;
+}
+
+.clock-disable {
+  opacity: 0.5;
 }
 
 .tips {
@@ -44,13 +45,9 @@
   background-color: #e3e3e3;
 }
 
-.row {
-  flex-direction: row;
-  justify-items: center;
-}
-
-.avatar{
-  width: 100rpx;
-  height: 100rpx;
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 100%;
+  margin: 0 16rpx;
 }

@@ -2,10 +2,9 @@ Page({
   data: {
     tips: "记得打卡哦~",
     checkName: "立即打卡",
-    record: {},
-    openid: null,
-    isAmin: false,
     member: null,
+    record: null,
+    isAmin: false,
   },
 
   onShow: function (e) {
@@ -13,45 +12,11 @@ Page({
   },
 
   init: async function (e) {
-    await this.getMember();
+    this.setData({
+      member: await getApp().getMember(),
+    });
     // await this.getRecord();
     // this.isAdmin(this.data.member.openid, this.data.record);
-  },
-
-  getMember: async function () {
-    // 从缓存中获取上次查询用户信息的时间，校验是否超过10小时
-    let member = wx.getStorageSync("member");
-    let last = wx.getStorageSync("getMemberTime");
-    let now = new Date();
-
-    // console.log("member", member);
-    // console.log("last", last);
-    // console.log("now", now);
-
-    if (last && now - last < 1000 * 60 * 60 * 10 && member) {
-      this.setData({ member });
-      console.log("localMember", this.data.member);
-      return; // 终止执行函数
-    }
-
-    // 从数据库中查询用户信息
-    try {
-      let res = await wx.cloud.callFunction({
-        name: "fun",
-        data: {
-          type: "getMember",
-        },
-      });
-      this.setData({ member: res.result });
-
-      // 设置/更新本地缓存
-      wx.setStorageSync("member", res.result);
-      wx.setStorageSync("getMemberTime", now);
-    } catch (error) {
-      console.log("getMember.error", error);
-    } finally {
-      console.log("member", this.data.member);
-    }
   },
 
   getRecord: async function (e) {
