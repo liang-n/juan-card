@@ -14,8 +14,8 @@ Page({
 
   init: async function (e) {
     await this.getMember();
-    await this.getRecord();
-    this.isAdmin(this.data.member.openid, this.data.record);
+    // await this.getRecord();
+    // this.isAdmin(this.data.member.openid, this.data.record);
   },
 
   getMember: async function () {
@@ -23,10 +23,15 @@ Page({
     let member = wx.getStorageSync("member");
     let last = wx.getStorageSync("getMemberTime");
     let now = new Date();
+
+    // console.log("member", member);
+    // console.log("last", last);
+    // console.log("now", now);
+
     if (last && now - last < 1000 * 60 * 60 * 10 && member) {
       this.setData({ member });
       console.log("localMember", this.data.member);
-      return; //终止执行函数
+      return; // 终止执行函数
     }
 
     // 从数据库中查询用户信息
@@ -40,7 +45,7 @@ Page({
       this.setData({ member: res.result });
 
       // 设置/更新本地缓存
-      wx.setStorageSync("member", member);
+      wx.setStorageSync("member", res.result);
       wx.setStorageSync("getMemberTime", now);
     } catch (error) {
       console.log("getMember.error", error);
@@ -72,6 +77,13 @@ Page({
     console.log("isAdmin", isAdmin);
     this.setData({
       isAdmin,
+    });
+  },
+
+  clearStorage: function () {
+    wx.clearStorage();
+    wx.showToast({
+      title: "清除缓存成功",
     });
   },
 });

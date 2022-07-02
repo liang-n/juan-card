@@ -5,7 +5,7 @@
 .banner {
   /* margin-top: 30rpx; */
   /* background-color: #eee; */
-  height: 400rpx;
+  height: 300rpx;
 }
 
 .clock {
@@ -47,4 +47,10 @@
 .row {
   flex-direction: row;
   justify-items: center;
+}
+
+.avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100%;
 }
