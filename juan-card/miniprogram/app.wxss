@@ -8,6 +8,7 @@ view {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  justify-content: stretch;
 }
 
 .background {
@@ -15,7 +16,6 @@ view {
   box-sizing: border-box;
   background-color: #fff;
   border-radius: 40rpx 40rpx 0 0;
-  margin-top: 10rpx;
   padding: 50rpx 50rpx 0 50rpx;
 }
 
@@ -76,3 +76,9 @@ view {
 .b {
   font-weight: bold;
 }
+
+/* weapp 样式自定义 */
+
+/* page {
+  --button-primary-color: #000;
+} */

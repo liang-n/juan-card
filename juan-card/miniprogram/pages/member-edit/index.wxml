@@ -1,14 +1,13 @@
-<view class="background">
+<view class="background column">
   <text class="title w-100">个人信息</text>
   <form class="form" bindsubmit="submit">
-    <!-- <image class="avatar" src="{{avatar}}" /> -->
+    <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image class="avatar" src="{{avatar}}"></image>
+    </button>
     <view class="group">
       <text class="lable">昵称</text>
-      <input class="i-content i-line" model:value="{{name}}" placeholder="输入活动名称" type="text" />
+      <input class="i-content i-line" model:value="{{name}}" placeholder="输入昵称" type="nickname" />
     </view>
-    <view class="group">
-      <text class="lable">活动简介</text>
-      <textarea class="i-content i-area" model:value="{{desc}}" placeholder="输入活动简介" />
-    </view>
+    <button type="primary" form-type="submit">提交</button>
   </form>
 </view>

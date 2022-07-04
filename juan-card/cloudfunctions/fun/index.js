@@ -8,6 +8,7 @@ const updateRecord = require("./record/update.js");
 const removeRecord = require("./record/remove.js");
 
 const getMember = require("./member/get.js");
+const updateMember = require("./member/update.js");
 
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV,
@@ -35,5 +36,7 @@ exports.main = async (event, context) => {
     // member 用户信息
     case "getMember":
       return await getMember.main(event, context, cloud, db);
+    case "updateMember":
+      return await updateMember.main(event, context, cloud, db);
   }
 };

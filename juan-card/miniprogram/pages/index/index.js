@@ -51,4 +51,24 @@ Page({
       title: "清除缓存成功",
     });
   },
+
+  login: function () {
+    // wx.login().then((res) => {
+    //   console.log(res);
+    //   wx.cloud.callFunction({
+    //     name: "fun",
+    //     data: {
+    //       type: "login",
+    //       data: {
+    //         code: res.code,
+    //       },
+    //     },
+    //   }).then(console.log);
+    //   // this.init();
+    // });
+    wx.getSetting().then(console.log)
+    wx.authorize({
+      scope: "scope.camera",
+    }).then(console.log);
+  },
 });

@@ -8,7 +8,7 @@
                 <text class="fs-24">积分：{{member.credit}}</text>
             </view>
         </navigator>
-        <view class="fs-32" wx:else>未登录</view>
+        <navigator class="fs-32" wx:else url="/pages/member-edit/index">未登录</navigator>
     </view>
     <!-- <image class="banner" mode="aspectFit" src="cloud://liang-dev-1grvzxw3e2399892.6c69-liang-dev-1grvzxw3e2399892-1312623944/创意发散.png" /> -->
     <view>
@@ -31,5 +31,8 @@
     </view>
     <view class="tips" bind:tap="clearStorage">
         <text>清除缓存</text>
+    </view>
+    <view class="tips" open-type="get">
+        <text>点击登录</text>
     </view>
 </view>
