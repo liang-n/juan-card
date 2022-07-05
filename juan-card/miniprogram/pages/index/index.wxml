@@ -1,28 +1,28 @@
 <view class="container column jc-fs">
     <view class="row nowrap ai-center m-24-24-0-24 jc-sb">
         <text class="p-title">每日打卡</text>
-        <image class="avatar" src="../../images/avatar.png" />
+        <image class="avatar" src="{{member.avatar}}" mode="aspectFill" />
     </view>
     <view class="card column">
-        <view class="banner-v">
-            <image class="banner" src="../../images/banner.png" mode="aspectFill" />
-        </view>
+        <navigator class="banner-v" url="/pages/member-edit/index">
+            <image class="banner" src="{{record.cover}}" mode="aspectFill" />
+        </navigator>
         <view class="row ai-center jc-sb">
-            <text class="t-title">卷-21人21天阅读打卡</text>
+            <text class="t-title">{{record.name}}</text>
             <view class="row tag-v ai-center">
-                <text class="tag-text">进行中</text>
+                <text class="tag-text">{{record._status}}</text>
             </view>
         </view>
         <view class="content">
-            <text>提倡读后感、笔记等，也可以是电子书截图或拍书照片，累积三天不打卡视为放弃，将不再记录。</text>
+            <text>{{record.desc}}</text>
             <view class="row ai-center nowrap">
                 <view class="info row nowrap ai-center">
                     <image class="icon" src="../../images/calendar.svg" mode="aspectFill" />
-                    <text class="info-tag-text">2021年8月25日 - 9月25日</text>
+                    <text class="info-tag-text">{{record._strDateRange}}</text>
                 </view>
                 <view class="info row nowrap ai-center">
                     <image class="icon" src="../../images/people.svg" mode="aspectFill" />
-                    <text>21人</text>
+                    <text>{{record.reader.length}} 人</text>
                 </view>
             </view>
         </view>
@@ -32,7 +32,7 @@
         <view style="width: 154rpx; height: 24rpx; background-color: rgba(108, 105, 253, 0.3); margin:0 0 -60rpx 32rpx; "></view>
         <text class="p-title">打卡记录</text>
     </view>
-    <view class="card comment-card column" wx:for="{{[1,2,3,4]}}">
+    <view class="card comment-card column" wx:for="{{[1,2,3,4]}}" wx:key="_id">
         <view class="row nowrap">
             <image class="avatar m-r-8px" src="../../images/avatar.png" />
             <view class="row nowrap jc-sb flex">
