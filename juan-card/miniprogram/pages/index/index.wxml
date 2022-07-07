@@ -1,59 +1,73 @@
 <view class="container column jc-fs">
-    <view class="row nowrap ai-center m-24-24-0-24 jc-sb">
-        <text class="p-title">每日打卡</text>
-        <image class="avatar" src="{{member.avatar}}" mode="aspectFill" />
+  <view class="row nowrap ai-center m-24-24-0-24 jc-sb">
+    <text class="p-title">每日打卡</text>
+    <navigator hover-class="none" url="/pages/member-edit/index">
+      <image class="avatar" src="{{member.avatar}}" mode="aspectFill" />
+    </navigator>
+  </view>
+  <view class="card column">
+    <view class="banner-v">
+      <image class="banner" src="{{record.cover}}" mode="aspectFill" />
     </view>
-    <view class="card column">
-        <navigator class="banner-v" url="/pages/member-edit/index">
-            <image class="banner" src="{{record.cover}}" mode="aspectFill" />
-        </navigator>
-        <view class="row ai-center jc-sb">
-            <text class="t-title">{{record.name}}</text>
-            <view class="row tag-v ai-center">
-                <text class="tag-text">{{record._status}}</text>
-            </view>
+    <view class="row ai-center jc-sb">
+      <text class="t-title">{{record.name}}</text>
+      <view class="row tag-v ai-center">
+        <text class="tag-text">{{record._status}}</text>
+      </view>
+    </view>
+    <view class="content">
+      <text>{{record.desc}}</text>
+      <view class="row ai-center nowrap">
+        <view class="info row nowrap ai-center">
+          <image class="icon" src="../../images/calendar.svg" mode="aspectFill" />
+          <text class="info-tag-text">{{record._strDateRange}}</text>
         </view>
-        <view class="content">
-            <text>{{record.desc}}</text>
-            <view class="row ai-center nowrap">
-                <view class="info row nowrap ai-center">
-                    <image class="icon" src="../../images/calendar.svg" mode="aspectFill" />
-                    <text class="info-tag-text">{{record._strDateRange}}</text>
-                </view>
-                <view class="info row nowrap ai-center">
-                    <image class="icon" src="../../images/people.svg" mode="aspectFill" />
-                    <text>{{record.reader.length}} 人</text>
-                </view>
-            </view>
+        <view class="info row nowrap ai-center">
+          <image class="icon" src="../../images/people.svg" mode="aspectFill" />
+          <text>{{record.reader.length}} 人</text>
         </view>
+      </view>
     </view>
-    <!-- 打卡记录：开始 -->
-    <view class="m-24-24-0-24">
-        <view style="width: 154rpx; height: 24rpx; background-color: rgba(108, 105, 253, 0.3); margin:0 0 -60rpx 32rpx; "></view>
-        <text class="p-title">打卡记录</text>
-    </view>
-    <view class="card comment-card column" wx:for="{{[1,2,3,4]}}" wx:key="_id">
-        <view class="row nowrap">
-            <image class="avatar m-r-8px" src="../../images/avatar.png" />
-            <view class="row nowrap jc-sb flex">
-                <view class="column">
-                    <text class="nickname">陈墨白只是个昵称么么哒</text>
-                    <text class="date">2022-07-03 22:30</text>
-                </view>
-                <view class="row nowrap ai-center">
-                    <text class="like-text">142</text>
-                    <image class="icon" src="../../images/like.svg" />
-                </view>
-            </view>
+  </view>
+  <!-- 立即打卡：开始 -->
+  <view>
+    <!-- <navigator url="/pages/card-edit/index?recordId={{record._id}}">立即打卡</navigator> -->
+    <button class="btn" type="primary" bindtap="changeShowCheck">立即打卡</button>
+  </view>
+  <page-container round="{{true}}" close-on-slideDown="{{true}}" show="{{isShowCheck}}">
+    <form bindsubmit="submit">
+      <input class="temp" type="text" model:value="{{desc}}" />
+      <button type="primary" form-type="submit">提交打卡</button>
+    </form>
+  </page-container>
+  <!-- 立即打卡：结束 -->
+  <!-- 打卡记录：开始 -->
+  <view class="m-24-24-0-24">
+    <view style="width: 154rpx; height: 24rpx; background-color: rgba(108, 105, 253, 0.3); margin:0 0 -60rpx 32rpx; "></view>
+    <text class="p-title">打卡记录</text>
+  </view>
+  <view class="card comment-card column" wx:for="{{[1,2,3,4]}}" wx:key="_id">
+    <view class="row nowrap">
+      <image class="avatar m-r-8px" src="../../images/avatar.png" />
+      <view class="row nowrap jc-sb flex">
+        <view class="column">
+          <text class="nickname">陈墨白只是个昵称么么哒</text>
+          <text class="date">2022-07-03 22:30</text>
         </view>
-        <view class="comment m-10-0-0-43 f-s-12">
-            今天看的这节比较长，也是作者人生经历中比较重要和转折处，所以这一节还没看完，但是作者两篇关于反腐倡廉的讲话稿，确实写的很好，是能引起人民群众感慨的。
+        <view class="row nowrap ai-center">
+          <text class="like-text">142</text>
+          <image class="icon" src="../../images/like.svg" />
         </view>
-        <view class="c-rgb-153 m-10-0-0-43 f-s-10">《三体·地球往事》</view>
+      </view>
     </view>
-    <view class="f-s-12 row jc-center m-10 c-rgb-153">
-        <text>到底了……</text>
+    <view class="comment m-10-0-0-43 f-s-12">
+      今天看的这节比较长，也是作者人生经历中比较重要和转折处，所以这一节还没看完，但是作者两篇关于反腐倡廉的讲话稿，确实写的很好，是能引起人民群众感慨的。
     </view>
-    <!-- 打卡记录：结束 -->
-    <!-- <view class="check row ai-center jc-center as-center">立即打卡</view> -->
+    <view class="c-rgb-153 m-10-0-0-43 f-s-10">《三体·地球往事》</view>
+  </view>
+  <view class="f-s-12 row jc-center m-10 c-rgb-153">
+    <text>到底了……</text>
+  </view>
+  <!-- 打卡记录：结束 -->
+  <!-- <view class="check row ai-center jc-center as-center">立即打卡</view> -->
 </view>

@@ -1,0 +1,5 @@
+.temp{
+  background-color: #eee;
+  height: 80rpx;
+  margin: 40rpx;
+}

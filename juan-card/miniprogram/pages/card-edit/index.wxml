@@ -1,0 +1,6 @@
+<view>
+  <form bindsubmit="submit">
+    <input class="temp" type="text" model:value="{{desc}}" />
+    <button type="primary" form-type="submit">提交打卡</button>
+  </form>
+</view>

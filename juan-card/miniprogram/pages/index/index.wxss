@@ -1,14 +1,19 @@
-.container {
-  background: #fff;
-  height: 100%;
-  /* border-radius: 40rpx 40rpx 0 0; */
+.temp{
+  background-color: #eee;
+  height: 80rpx;
+  margin: 40rpx;
 }
+
+
+
+
 
 .card {
   padding: 40rpx;
   margin: 48rpx;
   border-radius: 24rpx;
   box-shadow: 0 8rpx 80rpx 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
 .comment-card {
@@ -123,60 +128,3 @@
   box-shadow: 0px 20px 50px -15px rgba(80, 152, 250, 1);
 }
 
-.js-center {
-  justify-self: center;
-}
-
-.as-center {
-  align-self: center;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-}
-
-.nowrap {
-  flex-wrap: nowrap;
-}
-
-.jc-sb {
-  justify-content: space-between;
-}
-
-.jc-fs {
-  justify-content: flex-start;
-}
-
-.jc-center {
-  justify-content: center;
-}
-
-.ai-center {
-  align-items: center;
-}
-
-.m-24-24-0-24 {
-  margin: 40rpx 48rpx 0 48rpx;
-}
-
-.m-0-24 {
-  margin: 0 48rpx;
-}
-
-.m-r-8px {
-  margin-right: 16rpx;
-}
-
-.flex {
-  flex: 1;
-}
-
-.m-10 {
-  margin: 20rpx;
-}

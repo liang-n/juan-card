@@ -2,13 +2,14 @@
   "pages": [
     "pages/index/index",
     "pages/record-edit/index",
-    "pages/member-edit/index"
+    "pages/member-edit/index",
+    "pages/card-edit/index"
   ],
   "window": {
-    "backgroundColor": "#363636",
+    "backgroundColor": "#fff",
     "navigationBarBackgroundColor": "#363636",
     "navigationBarTitleText": "卷书阁",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white" 
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

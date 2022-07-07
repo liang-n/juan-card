@@ -1,6 +1,9 @@
 page {
-  background: #363636;
-  /* height: 100%; */
+  background: #fff;
+}
+
+.h-100 {
+  height: 100%;
 }
 
 .w-100 {
@@ -13,4 +16,62 @@ page {
 
 .b {
   font-weight: bold;
+}
+
+.js-center {
+  justify-self: center;
+}
+
+.as-center {
+  align-self: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.jc-fs {
+  justify-content: flex-start;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.m-24-24-0-24 {
+  margin: 40rpx 48rpx 0 48rpx;
+}
+
+.m-0-24 {
+  margin: 0 48rpx;
+}
+
+.m-r-8px {
+  margin-right: 16rpx;
+}
+
+.flex {
+  flex: 1;
+}
+
+.m-10 {
+  margin: 20rpx;
 }

@@ -5,6 +5,9 @@ Page({
     member: null,
     record: null,
     isAdmin: false,
+    isShowCheck: false,
+    desc: "",
+    img: "",
   },
 
   onShow: function (e) {
@@ -53,7 +56,7 @@ Page({
         startDate.getMonth() + 1
       }月${startDate.getDate()}日 - ${
         endDate.getMonth() + 1
-      }月${endDate.getDate()}`;
+      }月${endDate.getDate()}日`;
       record._strDateRange = _strDateRange;
 
       // 计算活动状态
@@ -97,6 +100,44 @@ Page({
     wx.clearStorage();
     wx.showToast({
       title: "清除缓存成功",
+    });
+  },
+
+  /**显示打卡页面 */
+  changeShowCheck: function () {
+    this.setData({
+      isShowCheck: true,
+    });
+  },
+
+  /**提交打卡信息 */
+  submit: async function () {
+    wx.cloud.callFunction({
+      name: "fun",
+      data: {
+        type: "createCard",
+        data: {
+          recordId: this.data.record._id,
+          desc: this.data.desc,
+          img: this.data.img,
+        },
+      },
+      success: (res) => {
+        if (res.result && res.result.status === "error") {
+          wx.showToast({
+            title: res.result.message,
+            icon: "error",
+          });
+        } else {
+          wx.showToast({
+            title: "提交成功",
+            icon: "success",
+            duration: 2000,
+          });
+          this.changeShowCheck();
+        }
+      },
+      fail: console.error,
     });
   },
 });

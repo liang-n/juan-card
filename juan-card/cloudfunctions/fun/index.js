@@ -10,6 +10,8 @@ const removeRecord = require("./record/remove.js");
 const getMember = require("./member/get.js");
 const updateMember = require("./member/update.js");
 
+const createCard = require("./card/create.js");
+
 cloud.init({
   env: cloud.DYNAMIC_CURRENT_ENV,
 });
@@ -38,5 +40,9 @@ exports.main = async (event, context) => {
       return await getMember.main(event, context, cloud, db);
     case "updateMember":
       return await updateMember.main(event, context, cloud, db);
+
+    // card 打卡记录
+    case "createCard":
+      return await createCard.main(event, context, cloud, db);
   }
 };
